@@ -10,23 +10,23 @@ concurrency:
   cancel-in-progress: true
   
 jobs:
-  name: 'Chaned Files'
-    - id: files
-      uses: jitterbit/get-changed-files@v1
-    - run: |
-        for changed_file in ${{ steps.files.outputs.all }}; do
-          echo "Do something with this ${changed_file}."
-        done
   build:
     name: 'Build and Test'
     runs-on: ubuntu-latest
-    
 
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
+
+      - name: Get Changed Files
+        id: files
+        uses: jitterbit/get-changed-files@v1
+        run: |
+          for changed_file in ${{ steps.files.outputs.all }}; do
+            echo "Do something with this ${changed_file}."
+          done
 
       - name: Get yarn cache
         id: yarn-cache
