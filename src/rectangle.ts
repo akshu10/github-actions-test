@@ -16,9 +16,4 @@ class Rectangle {
   }
 }
 
-// let rectangle = new Rectangle();
-// rectangle._width = 5;
-// rectangle._height = 5;
-
-// console.log(rectangle.area);
 export default new Rectangle();
