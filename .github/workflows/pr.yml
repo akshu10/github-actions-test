@@ -58,7 +58,7 @@ jobs:
       #   run: yarn lint
 
       - name: echo
-        if: {{contains(needs.changedfiles.outputs.ts, 'rectangle.spec.ts')}}
+        if: contains(needs.changedfiles.outputs.ts, 'rectangle.spec.ts')
         run: echo "HELLO WORLD!!!!!"
 
       - name: Build
