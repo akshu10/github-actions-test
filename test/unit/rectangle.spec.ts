@@ -24,8 +24,8 @@ describe("rectangle test", () => {
 
   it("should calculate length", () => {
     rectangle._width = 20;
-    rectangle._height = 10;
+    rectangle._height = 20;
 
-    expect(rectangle.length).toEqual(60);
+    expect(rectangle.length).toEqual(80);
   });
 });
