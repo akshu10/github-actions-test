@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
   
 jobs:
-  changedFiles:
+  name: 'Chaned Files'
     - id: files
       uses: jitterbit/get-changed-files@v1
     - run: |
