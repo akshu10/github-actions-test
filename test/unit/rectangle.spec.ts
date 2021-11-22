@@ -23,9 +23,9 @@ describe("rectangle test", () => {
   });
 
   it("should calculate length", () => {
-    rectangle._width = 20;
-    rectangle._height = 20;
+    rectangle._width = 5;
+    rectangle._height = 5;
 
-    expect(rectangle.length).toEqual(80);
+    expect(rectangle.length).toEqual(20);
   });
 });
