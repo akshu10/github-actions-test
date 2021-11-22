@@ -1,0 +1,9 @@
+.vscode/
+node_modules/
+build/
+*.key
+*.log
+coverage/
+.nyc_output/
+# macOS
+.DS_Store
