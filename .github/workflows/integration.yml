@@ -49,6 +49,6 @@ jobs:
 
 
       - name: Test
-        run: yarn test --coverage
+        run: yarn test test/integration
 
      
