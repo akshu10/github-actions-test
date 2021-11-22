@@ -14,4 +14,11 @@ describe("rectangle test", () => {
 
     expect(rectangle.length).toEqual(340);
   });
+
+  it("should calculate area", () => {
+    rectangle._width = 10;
+    rectangle._height = 10;
+
+    expect(rectangle.area).toEqual(100);
+  });
 });
