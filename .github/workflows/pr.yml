@@ -10,6 +10,23 @@ concurrency:
   cancel-in-progress: true
   
 jobs:
+  changedfiles:
+      runs-on: ubuntu-latest
+      # Map a step output to a job output
+      outputs:
+        all: ${{ steps.changes.outputs.all}}
+        ts: ${{ steps.changes.outputs.ts }}
+      steps:
+          # Make sure we have some code to diff.
+        - name: Checkout repository
+          uses: actions/checkout@v2
+        - name: Get changed files
+          id: changes
+          # Set outputs using the command.
+          run: |
+            echo "::set-output name=all::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | xargs)"
+            echo "::set-output name=ts::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep .ts$ | xargs)"
+
   build:
     name: 'Build and Test'
     runs-on: ubuntu-latest
@@ -19,14 +36,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-
-      - name: Get Changed Files
-        id: files
-        uses: jitterbit/get-changed-files@v1
-        run: |
-          for changed_file in ${{ steps.files.outputs.all }}; do
-            echo "Do something with this ${changed_file}."
-          done
 
       - name: Get yarn cache
         id: yarn-cache
@@ -40,7 +49,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      # Runs a single command using the runners shell
+        # Runs a single command using the runners shell
       - name: yarn install
         run: |
           yarn --prefer-offline --frozen-lockfile --no-progress --non-interactive
@@ -52,6 +61,6 @@ jobs:
         run: yarn build
 
 
-      - name: Test
-        run: yarn test --coverage
+    - name: Test
+      run: yarn test --coverage
 
