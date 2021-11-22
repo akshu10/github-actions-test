@@ -7,4 +7,11 @@ describe("rectangle test", () => {
 
     expect(rectangle.area).toEqual(5000);
   });
+
+  it("should calculate length of rectangle", () => {
+    rectangle._height = 100;
+    rectangle._width = 70;
+
+    expect(rectangle.length).toEqual(340);
+  });
 });
