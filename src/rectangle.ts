@@ -2,9 +2,9 @@ class Rectangle {
   _height: number;
   _width: number;
 
-  constructor(length?: number | undefined, width?: number | undefined) {
-    this._height = length;
-    this._width = width;
+  constructor(height?: number, width?: number) {
+    this._height = height ?? 0;
+    this._width = width ?? 0;
   }
 
   get area() {
