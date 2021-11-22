@@ -60,7 +60,6 @@ jobs:
       - name: Build
         run: yarn build
 
-
-    - name: Test
-      run: yarn test --coverage
+      - name: Test
+        run: yarn test --coverage
 
