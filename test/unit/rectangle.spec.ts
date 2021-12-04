@@ -33,6 +33,6 @@ describe("rectangle test", () => {
     rectangle._width = 1;
     rectangle._height = 1;
 
-    expect(rectangle.length).toEqual(1);
+    expect(rectangle.length).toEqual(4);
   });
 });
