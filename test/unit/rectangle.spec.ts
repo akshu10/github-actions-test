@@ -23,9 +23,16 @@ describe("rectangle test", () => {
   });
 
   it("should calculate length", () => {
-    rectangle._width = 5;
+    rectangle._width = 20;
     rectangle._height = 5;
 
-    expect(rectangle.length).toEqual(20);
+    expect(rectangle.length).toEqual(50);
+  });
+
+  it("should calculate area", () => {
+    rectangle._width = 1;
+    rectangle._height = 1;
+
+    expect(rectangle.length).toEqual(4);
   });
 });

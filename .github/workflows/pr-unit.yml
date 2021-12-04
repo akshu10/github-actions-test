@@ -2,6 +2,8 @@ name: CI-branch
 
 on:
   push:
+    paths:
+      - 'test/unit/**.spec.ts'
     branches-ignore:
       - 'master'
 
@@ -10,27 +12,9 @@ concurrency:
   cancel-in-progress: true
   
 jobs:
-
-  changedFiles:
-    runs-on: ubuntu-latest
-    outputs: 
-      all: ${{ steps.changes.outputs.all }}
-    steps:
-      - name: Checkout Repository
-      - uses: actions/checkout@v2
-        with: 
-          fetch-depth: 0
-      - name: Get changed files
-        id: changes
-
-        run: |
-          echo "::set-output name=all::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | xargs)"
-          echo "::set-output name=ts::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep .ts$ | xargs)"
-
   build:
     name: 'Build and Test'
     runs-on: ubuntu-latest
-    
 
     steps:
       - uses: actions/checkout@v2
@@ -50,20 +34,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      # Runs a single command using the runners shell
+        # Runs a single command using the runners shell
       - name: yarn install
-        needs: changedFiles
-        if: ${{contains(needs.changedFiles.output.all,)}}
         run: |
           yarn --prefer-offline --frozen-lockfile --no-progress --non-interactive
           
       # - name: Lint
       #   run: yarn lint
-
       - name: Build
         run: yarn build
 
-
       - name: Test
-        run: yarn test --coverage
+        run: yarn test test/unit
 
