@@ -2,6 +2,8 @@ name: CI-branch
 
 on:
   push:
+    paths:
+      - 'tests/unit/*'
     branches-ignore:
       - 'master'
 
