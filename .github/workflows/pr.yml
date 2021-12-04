@@ -3,7 +3,7 @@ name: CI-branch
 on:
   push:
     paths:
-      - 'tests/unit/**.ts'
+      - 'tests/unit/**.**.ts'
     branches-ignore:
       - 'master'
 
