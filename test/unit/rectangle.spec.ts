@@ -30,9 +30,9 @@ describe("rectangle test", () => {
   });
 
   it("should calculate area", () => {
-    rectangle._width = 0;
-    rectangle._height = 0;
+    rectangle._width = 1;
+    rectangle._height = 1;
 
-    expect(rectangle.length).toEqual(0);
+    expect(rectangle.length).toEqual(1);
   });
 });
