@@ -33,7 +33,9 @@ jobs:
           yarn --prefer-offline --frozen-lockfile --no-progress --non-interactive
 
       - name: Echo directory
-        run: echo "Hello World"
+        run: | 
+          echo "Hello World"
+          echo "{{ $GITHUB_WORKSPACE }} "
 
       - name: Build
         run: yarn build
