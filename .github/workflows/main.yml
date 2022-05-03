@@ -34,7 +34,9 @@ jobs:
 
       # - name: Lint
       #   run: yarn lint
-
+      - name: Echo directory
+        run: |
+          echo ${{ env.GITHUB_WORKSPACE }}
       - name: Build
         run: yarn build
 
