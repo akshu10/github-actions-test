@@ -31,9 +31,9 @@ jobs:
       - name: yarn install
         run: |
           yarn --prefer-offline --frozen-lockfile --no-progress --non-interactive
-          
+
       - name: Echo directory
-        run: echo "GITHUB_WORKSPACE = $GITHUB_WORKSPACE"
+        run: echo "Hello World"
 
       - name: Build
         run: yarn build
