@@ -35,7 +35,7 @@ jobs:
       # - name: Lint
       #   run: yarn lint
       - name: Echo directory
-        run: echo $GITHUB_WORKSPACE
+        run: echo "GITHUB_WORKSPACE = $GITHUB_WORKSPACE"
 
       - name: Build
         run: yarn build
