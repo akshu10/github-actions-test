@@ -34,7 +34,7 @@ jobs:
 
       - name: Echo directory
         run: |
-          pwd
+          ls ./src
           echo "Hello World"
           echo "{{ $GITHUB_WORKSPACE/src }} "
 
