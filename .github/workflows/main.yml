@@ -31,14 +31,9 @@ jobs:
       - name: yarn install
         run: |
           yarn --prefer-offline --frozen-lockfile --no-progress --non-interactive
-
-      # - name: Lint
-      #   run: yarn lint
+          
       - name: Echo directory
         run: echo "GITHUB_WORKSPACE = $GITHUB_WORKSPACE"
 
       - name: Build
         run: yarn build
-
-
-      #l -X POST -H 'Content-type: application/json' --data '{"text":"'"$GITHUB_WORKFLOW"' Failed for `${{ github.event.repository.name }}` - <'"$GITHUB_SERVER_URL"'/'"$GITHUB_REPOSITORY"'/actions/runs/'"$GITHUB_RUN_ID"'|View Run>"}' https://hooks.slack.com/services/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
